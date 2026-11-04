@@ -1,0 +1,11 @@
+# 공통 A — 프롤로그 + 1장 「실측」 에셋 (story/00_prologue.txt, story/01_ch1.txt)
+
+## 이벤트 CG
+
+- **com_cg01** — 프롤로그, 3월 28일 옥상의 첫 블루 아워. 낮은 난간에 팔을 얹은 주인공의 뒷모습(얼굴은 거의 보이지 않음). 해가 진 직후 하늘이 위에서부터 남색으로 내려앉고, 운하 수면이 하늘보다 한 톤 늦게 푸르게 물든다. 건너편 낮은 주택들에 불이 하나둘, 멀리 재개발 지구의 타워 크레인이 검은 실루엣. 화면 한쪽에 녹슨 물탱크와 먼지로 흐린 작은 유리 온실(빛의 방). — `anime style visual novel event CG, 16:9, rooftop of an old six-story 1960s modernist concrete apartment at blue hour just after sunset, a young man in a plain coat seen from behind resting his arms on a low parapet, deep navy sky descending from the top, a canal below turning blue slightly later than the sky, low houses across the canal with a few windows lighting up, distant tower cranes as black silhouettes, rusty water tank and a small dusty glass greenhouse at the edge of frame, cold clear air, quiet breathing moment, soft cinematic lighting, muted sophisticated palette, no text`
+- **com_cg02** — 1장, 4월 12일 새벽 3시 옥상. 물탱크 옆 운하 쪽 난간 아래에 쭈그려 앉아 스케치하는 유이. 오버사이즈 후디, 어깨 아래 부스스한 연갈색 머리, 동그란 안경, 무릎 위 작은 스케치북, 바닥에 둔 휴대폰 화면 불빛이 스탠드 역할. 손끝에 잉크. 멀리 스카이트리와 드문드문 남은 창의 불빛. 몸은 웅크렸지만 연필 선은 빠르고 대담한 순간. — `anime style visual novel event CG, 16:9, rooftop of an old concrete apartment at 3am, night city with sparse lit windows and a distant Tokyo Skytree, a young adult woman with messy shoulder-length light brown hair, round glasses and an oversized hoodie crouching by the parapet next to a water tank, small sketchbook on her knees, sketching quickly with a pencil, ink-stained fingertips, smartphone on the floor as her only light source illuminating her face softly, lonely but focused mood, cool dark blue palette with a faint warm screen glow, delicate linework, no text`
+
+## 새 배경
+
+- **vacant_unit_day** — 5층 빈 세대(504호) 거실, 낮. 가구가 전혀 없는 오크 쪽널 마루(먼지가 엷게 쌓임), 회반죽 벽, 엷은 회색 천장. 운하 쪽 큰 창과 그 위 바깥으로 살짝 기운 가로로 긴 고창. 70년대에 알루미늄으로 바꾼 창틀, 커튼레일만 남은 창. 바닥에 떨어진 오후의 빛. 권장 색: `#bfb6a6`, `#ece6da`.
+  - 프롬프트: `anime style visual novel background, 16:9, no people, empty living room of a vacant 1960s Japanese modernist apartment, worn oak strip flooring with a thin layer of dust, white lime plaster walls, pale grey ceiling, large window facing a canal with a long horizontal clerestory window above it tilted slightly outward, old aluminum window frames, bare curtain rail, soft afternoon light falling on the floor, quiet abandoned but warm atmosphere`
