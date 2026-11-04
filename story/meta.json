@@ -462,6 +462,27 @@
         "#a99f90",
         "#e4ddd0"
       ]
+    },
+    "rin_nursing": {
+      "desc": "치바의 요양원 라운지, 낮. 창가 테이블",
+      "colors": [
+        "#b8c2b8",
+        "#eef0ea"
+      ]
+    },
+    "rin_workshop": {
+      "desc": "후나바시의 옛 공무점 자리, 지금은 가구 공방. 대패밥과 목재",
+      "colors": [
+        "#7a5a3a",
+        "#d8c0a0"
+      ]
+    },
+    "rin_new_nocturne": {
+      "desc": "구라마에의 새 NOCTURNE, 밤. 강이 보이는 작은 바",
+      "colors": [
+        "#22160e",
+        "#8a5a32"
+      ]
     }
   }
 }
