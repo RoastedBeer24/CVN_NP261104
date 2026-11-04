@@ -483,6 +483,34 @@
         "#22160e",
         "#8a5a32"
       ]
+    },
+    "room302_dusk": {
+      "desc": "302호 빈 집, 블루 아워. 푸른 천장과 키재기 자국",
+      "colors": [
+        "#203a66",
+        "#8aa0c4"
+      ]
+    },
+    "shiori_apartment_morning": {
+      "desc": "시오리의 고층 맨션, 아침. 커튼 사이 겨울 햇빛",
+      "colors": [
+        "#c8d4e0",
+        "#f4efe6"
+      ]
+    },
+    "airport_arrival": {
+      "desc": "하네다 공항 도착 로비",
+      "colors": [
+        "#9aa8b6",
+        "#eef1f4"
+      ]
+    },
+    "minato_gallery": {
+      "desc": "미나토 시라카와 테라스 분양 홍보관. 조감도와 모형",
+      "colors": [
+        "#d6d2c8",
+        "#ffffff"
+      ]
     }
   }
 }
