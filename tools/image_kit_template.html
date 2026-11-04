@@ -128,7 +128,7 @@ pre.msg { margin: 0; padding: 14px 16px; background: var(--surface-2); border-to
   <header>
     <div class="eyebrow">BLUE HOUR · IMAGE KIT</div>
     <h1>블루 아워 이미지 키트</h1>
-    <p class="lede">게임에 들어갈 그림을 GPT 이미지 생성으로 뽑기 위한 주문서입니다. 시작 메시지로 그림체를 한 번 정해 두고, 배치 메시지를 하나씩 붙여넣으면 여러 장이 순서대로 나옵니다.</p>
+    <p class="lede">받은 이미지(배경·캐릭터)는 미리 완료로 표시해 두었습니다. 남은 것은 이벤트 CG입니다. 게임에 들어갈 그림을 GPT 이미지 생성으로 뽑기 위한 주문서입니다. 시작 메시지로 그림체를 한 번 정해 두고, 배치 메시지를 하나씩 붙여넣으면 여러 장이 순서대로 나옵니다.</p>
   </header>
 
   <section class="progress" aria-label="진행 상황">
@@ -188,6 +188,7 @@ const KIT = __DATA__;
   const KEY = "bh_kit_done_v1";
   let done = {};
   try { done = JSON.parse(localStorage.getItem(KEY) || "{}") || {}; } catch (e) { done = {}; }
+  (KIT.received || []).forEach((f) => { if (!(f in done)) done[f] = 1; });
   const save = () => { try { localStorage.setItem(KEY, JSON.stringify(done)); } catch (e) {} };
   const $ = (s, r = document) => r.querySelector(s);
   const esc = (s) => String(s).replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
@@ -246,7 +247,7 @@ const KIT = __DATA__;
           const cb = $("input", row);
           cb.checked = !!done[it.file];
           row.classList.toggle("done", cb.checked);
-          cb.onchange = () => { if (cb.checked) done[it.file] = 1; else delete done[it.file]; save(); row.classList.toggle("done", cb.checked); update(); };
+          cb.onchange = () => { done[it.file] = cb.checked ? 1 : 0; save(); row.classList.toggle("done", cb.checked); update(); };
           $("button", row).onclick = () => copy(single(it), it.file + " 프롬프트를");
           box.appendChild(row);
         });

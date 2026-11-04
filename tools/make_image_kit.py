@@ -259,7 +259,8 @@ def main():
                             "text": "\n".join(lines).strip(), "items": its})
             items += its
 
-    out = {"style": STYLE, "start": START_MSG, "zip": ZIP_MSG, "batches": batches,
+    received = sorted(os.path.basename(f) for f in __import__("glob").glob(os.path.join(ROOT, "game", "assets", "*", "*.*")))
+    out = {"received": received, "style": STYLE, "start": START_MSG, "zip": ZIP_MSG, "batches": batches,
            "counts": {"total": len(items), "ch": sum(1 for i in items if "/ch/" in i["folder"]),
                       "bg": sum(1 for i in items if "/bg/" in i["folder"]),
                       "cg": sum(1 for i in items if "/cg/" in i["folder"])}}

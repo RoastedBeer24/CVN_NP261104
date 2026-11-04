@@ -116,7 +116,7 @@
   function resolveImg(dir, id) {
     const key = dir + "/" + id;
     if (imgCache[key]) return imgCache[key];
-    const exts = ["webp", "png", "jpg", "jpeg"];
+    const exts = ["png", "webp", "jpg", "jpeg"];
     imgCache[key] = new Promise((resolve) => {
       let i = 0;
       const tryNext = () => {
