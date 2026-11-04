@@ -511,6 +511,34 @@
         "#d6d2c8",
         "#ffffff"
       ]
+    },
+    "hanae_room": {
+      "desc": "501호 하나에 할머니의 집. 제라늄 화분, 오래된 찬장",
+      "colors": [
+        "#a08a6e",
+        "#e8dcc6"
+      ]
+    },
+    "roastery_kuramae": {
+      "desc": "구라마에의 로스터리, 낮. 스미다강이 보이는 창고형 공간",
+      "colors": [
+        "#6e5a48",
+        "#d9cbb8"
+      ]
+    },
+    "konbini_night": {
+      "desc": "심야 편의점 앞. 형광등 불빛",
+      "colors": [
+        "#10161e",
+        "#7fa0a8"
+      ]
+    },
+    "kurokawa_office_night": {
+      "desc": "쿠로카와 설계 사무실, 밤. 모니터와 야근하는 사람들",
+      "colors": [
+        "#0e1218",
+        "#3e4a58"
+      ]
     }
   }
 }
