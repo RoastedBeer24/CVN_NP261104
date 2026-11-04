@@ -1,0 +1,278 @@
+<title>블루 아워 이미지 키트</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&family=Noto+Serif+KR:wght@400;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+/* 레이아웃: 상단 진행 바 + 3단계 안내 + 그룹별 배치 카드 목록 (한 열, 최대 880px) */
+:root {
+  --bg: #eef1f6;
+  --surface: #ffffff;
+  --surface-2: #f5f7fb;
+  --ink: #18223a;
+  --ink-2: #4c5875;
+  --ink-3: #7c879f;
+  --line: #d8deea;
+  --blue: #2f5596;
+  --blue-soft: #dfe8f7;
+  --amber: #b27a2a;
+  --done: #3d7a5c;
+  --done-soft: #e2f0e8;
+  --serif: "Noto Serif KR", "Apple SD Gothic Neo", serif;
+  --sans: "Noto Sans KR", "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
+  --mono: "IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0c1426; --surface: #131e36; --surface-2: #18243f; --ink: #e9eef8; --ink-2: #aeb9d0; --ink-3: #7d89a3;
+    --line: #26355a; --blue: #8fb0e6; --blue-soft: #1e2f55; --amber: #e0b469; --done: #7fc7a0; --done-soft: #17352a;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0c1426; --surface: #131e36; --surface-2: #18243f; --ink: #e9eef8; --ink-2: #aeb9d0; --ink-3: #7d89a3;
+  --line: #26355a; --blue: #8fb0e6; --blue-soft: #1e2f55; --amber: #e0b469; --done: #7fc7a0; --done-soft: #17352a;
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+body { background: var(--bg); color: var(--ink); font-family: var(--sans); font-size: 15px; line-height: 1.65; }
+.wrap { max-width: 880px; margin: 0 auto; padding-block: 28px 80px; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); display: flex; flex-direction: column; gap: 28px; }
+h1 { font-family: var(--serif); font-weight: 600; font-size: clamp(26px, 5vw, 34px); letter-spacing: .04em; margin: 0; text-wrap: balance; }
+h2 { font-family: var(--serif); font-weight: 600; font-size: 20px; margin: 0; letter-spacing: .03em; }
+.eyebrow { font-size: 12px; letter-spacing: .18em; color: var(--blue); font-weight: 500; }
+.lede { color: var(--ink-2); margin: 6px 0 0; max-width: 62ch; }
+.mono { font-family: var(--mono); }
+
+/* 진행 */
+.progress { display: flex; flex-direction: column; gap: 10px; }
+.counts { display: flex; flex-wrap: wrap; gap: 6px 18px; font-size: 13px; color: var(--ink-2); font-variant-numeric: tabular-nums; }
+.counts b { color: var(--ink); font-weight: 600; }
+.bar { height: 6px; background: var(--line); border-radius: 3px; overflow: hidden; }
+.bar i { display: block; height: 100%; width: 0; background: var(--done); transition: width .3s; }
+
+/* 단계 */
+.steps { display: flex; flex-direction: column; gap: 12px; }
+.step { background: var(--surface); border: 1px solid var(--line); border-radius: 8px; padding: 18px 20px; display: grid; grid-template-columns: 34px 1fr; gap: 4px 14px; }
+.step > *:not(.no) { grid-column: 2; min-width: 0; }
+.step .no { grid-row: 1 / span 8; width: 30px; height: 30px; border-radius: 50%; background: var(--blue-soft); color: var(--blue); display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 14px; }
+.step h3 { margin: 2px 0 0; font-size: 16px; font-weight: 600; }
+.step p { margin: 0; color: var(--ink-2); font-size: 14px; min-width: 0; }
+.step .actions { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 8px; }
+.note { font-size: 13px; color: var(--ink-3); }
+ul.tips { margin: 4px 0 0; padding-left: 18px; color: var(--ink-2); font-size: 14px; }
+ul.tips li { margin: 2px 0; }
+code.f { font-family: var(--mono); font-size: 12.5px; background: var(--surface-2); border: 1px solid var(--line); padding: 1px 6px; border-radius: 4px; }
+
+/* 버튼 */
+button { font-family: inherit; cursor: pointer; }
+.btn { border: 1px solid var(--line); background: var(--surface); color: var(--ink); border-radius: 6px; padding: 8px 14px; font-size: 14px; font-weight: 500; display: inline-flex; align-items: center; gap: 6px; }
+.btn:hover { border-color: var(--blue); }
+.btn.primary { background: var(--blue); border-color: var(--blue); color: var(--bg); }
+.btn.small { padding: 4px 10px; font-size: 12.5px; }
+.btn:focus-visible, summary:focus-visible, input:focus-visible { outline: 2px solid var(--blue); outline-offset: 2px; }
+.btn.ok { background: var(--done-soft); border-color: var(--done); color: var(--done); }
+
+/* 필터 */
+.toolbar { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; position: sticky; top: env(safe-area-inset-top, 0px); background: var(--bg); padding: 10px 0; z-index: 5; border-bottom: 1px solid var(--line); }
+body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 10; background: var(--bg); }
+.seg { display: flex; border: 1px solid var(--line); border-radius: 6px; overflow: hidden; }
+.seg button { border: 0; background: var(--surface); color: var(--ink-2); padding: 6px 12px; font-size: 13px; }
+.seg button + button { border-left: 1px solid var(--line); }
+.seg button[aria-pressed="true"] { background: var(--blue-soft); color: var(--blue); font-weight: 600; }
+.toolbar label { font-size: 13px; color: var(--ink-2); display: flex; align-items: center; gap: 6px; margin-left: auto; }
+
+/* 배치 */
+.group { display: flex; flex-direction: column; gap: 10px; }
+.group-head { display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap; }
+.group-head .note { margin-left: auto; }
+.batch { background: var(--surface); border: 1px solid var(--line); border-radius: 8px; }
+.batch.complete { border-color: var(--done); }
+.batch-top { display: flex; align-items: center; gap: 12px; padding: 14px 16px; flex-wrap: wrap; }
+.batch-top .t { min-width: 0; flex: 1 1 200px; }
+.batch-top .t b { font-size: 15.5px; font-weight: 600; display: block; }
+.batch-top .t span { font-size: 13px; color: var(--ink-3); }
+.pill { font-size: 12px; font-variant-numeric: tabular-nums; padding: 2px 9px; border-radius: 10px; background: var(--surface-2); color: var(--ink-2); border: 1px solid var(--line); white-space: nowrap; }
+.batch.complete .pill { background: var(--done-soft); color: var(--done); border-color: var(--done); }
+.pill.p1 { background: var(--blue-soft); color: var(--blue); border-color: transparent; }
+details { border-top: 1px solid var(--line); }
+summary { padding: 10px 16px; font-size: 13px; color: var(--ink-2); cursor: pointer; list-style: none; display: flex; align-items: center; gap: 8px; }
+summary::-webkit-details-marker { display: none; }
+summary::before { content: "▸"; font-size: 11px; transition: transform .15s; }
+details[open] summary::before { transform: rotate(90deg); }
+.items { display: flex; flex-direction: column; }
+.item { display: grid; grid-template-columns: 24px 1fr auto; gap: 4px 12px; padding: 12px 16px; border-top: 1px solid var(--line); align-items: start; }
+.item input { width: 18px; height: 18px; margin-top: 2px; accent-color: var(--done); }
+.item .body { min-width: 0; display: flex; flex-direction: column; gap: 2px; }
+.item .fn { font-family: var(--mono); font-size: 13.5px; font-weight: 500; overflow-wrap: anywhere; }
+.item.done .fn { color: var(--done); text-decoration: line-through; text-decoration-thickness: 1px; }
+.item .ko { font-size: 13px; color: var(--ink-2); }
+.item .folder { font-size: 11.5px; color: var(--ink-3); font-family: var(--mono); }
+.item .pr { font-size: 12.5px; color: var(--ink-3); line-height: 1.55; margin-top: 4px; overflow-wrap: anywhere; }
+pre.msg { margin: 0; padding: 14px 16px; background: var(--surface-2); border-top: 1px solid var(--line); font-family: var(--mono); font-size: 12px; line-height: 1.6; white-space: pre-wrap; overflow-wrap: anywhere; color: var(--ink-2); max-height: 320px; overflow: auto; }
+.hide-done .item.done, .hide-done .batch.complete { display: none; }
+
+#toast { position: fixed; left: 50%; bottom: calc(24px + env(safe-area-inset-bottom, 0px)); transform: translateX(-50%) translateY(20px); background: var(--ink); color: var(--bg); padding: 9px 18px; border-radius: 20px; font-size: 14px; opacity: 0; transition: opacity .2s, transform .2s; pointer-events: none; z-index: 20; }
+#toast.on { opacity: 1; transform: translateX(-50%) translateY(0); }
+#fallback { position: fixed; inset: 0; background: rgba(0,0,0,.5); display: flex; align-items: center; justify-content: center; padding: 16px; z-index: 30; }
+#fallback .box { background: var(--surface); border-radius: 8px; padding: 18px; width: min(640px, 100%); display: flex; flex-direction: column; gap: 10px; }
+#fallback textarea { width: 100%; height: 50vh; font-family: var(--mono); font-size: 12px; background: var(--surface-2); color: var(--ink); border: 1px solid var(--line); border-radius: 6px; padding: 10px; }
+@media (max-width: 520px) {
+  .item { grid-template-columns: 22px 1fr; }
+  .item .btn { grid-column: 2; justify-self: start; }
+  .toolbar label { margin-left: 0; }
+}
+@media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
+</style>
+
+<div class="wrap">
+  <header>
+    <div class="eyebrow">BLUE HOUR · IMAGE KIT</div>
+    <h1>블루 아워 이미지 키트</h1>
+    <p class="lede">게임에 들어갈 그림을 GPT 이미지 생성으로 뽑기 위한 주문서입니다. 시작 메시지로 그림체를 한 번 정해 두고, 배치 메시지를 하나씩 붙여넣으면 여러 장이 순서대로 나옵니다.</p>
+  </header>
+
+  <section class="progress" aria-label="진행 상황">
+    <div class="counts" id="counts"></div>
+    <div class="bar"><i id="bar"></i></div>
+  </section>
+
+  <section class="steps" aria-label="사용 방법">
+    <div class="step">
+      <div class="no">1</div>
+      <h3>새 대화에 시작 메시지 붙여넣기</h3>
+      <p>그림체와 작품 설정, 진행 규칙을 GPT에게 먼저 알려 줍니다. 그림체 참고 이미지가 있으면 이 메시지와 함께 첨부하세요. 캐릭터나 의상은 가져오지 말라고 메시지에 적어 두었습니다.</p>
+      <div class="actions">
+        <button class="btn primary" id="copy-start" type="button">시작 메시지 복사</button>
+        <button class="btn" id="show-start" type="button" aria-expanded="false">내용 보기</button>
+      </div>
+      <pre class="msg" id="start-pre" hidden></pre>
+    </div>
+    <div class="step">
+      <div class="no">2</div>
+      <h3>배치 메시지를 하나씩 붙여넣기</h3>
+      <p>한 배치는 2~10장입니다. 다 나오면 다음 배치를 붙여넣으세요. 권장 순서는 아래 목록 순서입니다(히로인 → 조연 → 핵심 배경 → 나머지 배경 → 이벤트 CG).</p>
+      <ul class="tips">
+        <li>캐릭터는 1번 기본 표정을 먼저 만들고 같은 그림에서 표정만 바꿉니다. 기본 표정이 마음에 들 때까지 다시 뽑은 뒤 진행하세요.</li>
+        <li>중간에 멈추면 <code class="f">계속</code> 이라고 보내면 이어서 만듭니다.</li>
+        <li>대화가 길어져 그림체가 흐려지면, 새 대화에서 시작 메시지부터 다시 붙여넣으세요.</li>
+      </ul>
+    </div>
+    <div class="step">
+      <div class="no">3</div>
+      <h3>파일명대로 저장해서 가져오기</h3>
+      <p>각 이미지 위에 적힌 파일명으로 저장한 뒤 저에게 보내 주시면 게임에 넣겠습니다. 직접 넣으려면 항목마다 적힌 폴더에 두면 됩니다. 확장자는 png·jpg·webp 모두 됩니다.</p>
+      <div class="actions">
+        <button class="btn" id="copy-zip" type="button">ZIP 요청 메시지 복사</button>
+      </div>
+      <p class="note">ZIP 요청은 GPT 환경에 따라 동작하지 않을 수 있습니다. 그럴 때는 이미지를 하나씩 내려받으세요. 완료한 항목은 체크해 두면 이 브라우저에 기억됩니다.</p>
+    </div>
+  </section>
+
+  <div class="toolbar">
+    <div class="seg" role="group" aria-label="종류">
+      <button type="button" data-f="all" aria-pressed="true">전체</button>
+      <button type="button" data-f="캐릭터" aria-pressed="false">캐릭터</button>
+      <button type="button" data-f="배경" aria-pressed="false">배경</button>
+      <button type="button" data-f="이벤트 CG" aria-pressed="false">이벤트 CG</button>
+    </div>
+    <label><input type="checkbox" id="hide-done"> 완료한 것 숨기기</label>
+  </div>
+
+  <main id="list"></main>
+</div>
+<div id="toast" role="status" aria-live="polite"></div>
+
+<script>
+const KIT = __DATA__;
+(function () {
+  const KEY = "bh_kit_done_v1";
+  let done = {};
+  try { done = JSON.parse(localStorage.getItem(KEY) || "{}") || {}; } catch (e) { done = {}; }
+  const save = () => { try { localStorage.setItem(KEY, JSON.stringify(done)); } catch (e) {} };
+  const $ = (s, r = document) => r.querySelector(s);
+  const esc = (s) => String(s).replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+
+  let toastT;
+  function toast(m) { const t = $("#toast"); t.textContent = m; t.classList.add("on"); clearTimeout(toastT); toastT = setTimeout(() => t.classList.remove("on"), 1500); }
+  function fallback(text) {
+    const w = document.createElement("div"); w.id = "fallback";
+    w.innerHTML = '<div class="box"><b>자동 복사가 안 돼서 직접 복사해 주세요</b><textarea id="fb-ta" readonly></textarea><button class="btn primary" type="button">닫기</button></div>';
+    document.body.appendChild(w);
+    const ta = $("#fb-ta", w); ta.value = text; ta.focus(); ta.select();
+    w.querySelector("button").onclick = () => w.remove();
+    w.onclick = (e) => { if (e.target === w) w.remove(); };
+  }
+  function copy(text, label) {
+    try {
+      navigator.clipboard.writeText(text).then(() => toast(label + " 복사했습니다"), () => fallback(text));
+    } catch (e) { fallback(text); }
+  }
+
+  function single(it) {
+    const isCh = it.folder.indexOf("/ch/") >= 0;
+    const fmt = isCh ? "세로 2:3, 배경 투명 PNG, 머리부터 허벅지 중간까지 스탠딩" : "가로 3:2 (16:9로 잘라 쓸 수 있게)";
+    return "[블루 아워 · 단일 이미지]\n앞에서 정한 그림체로 아래 1장을 만들어 줘. 이미지 위에 파일명을 적어 줘.\n공통: " + fmt + " / 글자 없음.\n\n1) " + it.file + "\n" + it.prompt;
+  }
+
+  $("#start-pre").textContent = KIT.start;
+  $("#copy-start").onclick = () => copy(KIT.start, "시작 메시지를");
+  $("#copy-zip").onclick = () => copy(KIT.zip, "ZIP 요청 메시지를");
+  $("#show-start").onclick = (e) => { const p = $("#start-pre"); p.hidden = !p.hidden; e.currentTarget.setAttribute("aria-expanded", String(!p.hidden)); e.currentTarget.textContent = p.hidden ? "내용 보기" : "접기"; };
+
+  const groups = [["캐릭터", "스탠딩 · game/assets/ch/"], ["배경", "game/assets/bg/"], ["이벤트 CG", "game/assets/cg/"]];
+  function render() {
+    const list = $("#list"); list.innerHTML = "";
+    groups.forEach(([g, hint]) => {
+      const bs = KIT.batches.filter((b) => b.group === g);
+      const sec = document.createElement("section"); sec.className = "group"; sec.dataset.group = g;
+      const n = bs.reduce((a, b) => a + b.items.length, 0);
+      sec.innerHTML = `<div class="group-head"><h2>${g}</h2><span class="note">${n}장 · ${hint}</span></div>`;
+      bs.forEach((b) => {
+        const el = document.createElement("article"); el.className = "batch"; el.dataset.id = b.id;
+        const p1 = b.items.some((i) => i.prio === 1);
+        el.innerHTML = `<div class="batch-top"><div class="t"><b>${esc(b.title)}</b><span>${esc(b.sub)}</span></div>
+          ${p1 ? '<span class="pill p1">먼저</span>' : ""}<span class="pill cnt"></span>
+          <button class="btn primary small cp" type="button">배치 복사</button></div>
+          <details><summary>이미지 ${b.items.length}장 · 파일명과 프롬프트</summary><div class="items"></div><pre class="msg"></pre></details>`;
+        $(".cp", el).onclick = () => copy(b.text, "「" + b.title + "」 배치를");
+        $("pre.msg", el).textContent = b.text;
+        const box = $(".items", el);
+        b.items.forEach((it, k) => {
+          const row = document.createElement("div"); row.className = "item";
+          const id = "c_" + it.file.replace(/\W/g, "_");
+          row.innerHTML = `<input type="checkbox" id="${id}" aria-label="${esc(it.file)} 완료">
+            <label class="body" for="${id}"><span class="fn">${esc(it.file)}</span><span class="ko">${esc(it.ko)}</span><span class="folder">${esc(it.folder)}</span><span class="pr">${esc(it.prompt)}</span></label>
+            <button class="btn small" type="button">한 장만 복사</button>`;
+          const cb = $("input", row);
+          cb.checked = !!done[it.file];
+          row.classList.toggle("done", cb.checked);
+          cb.onchange = () => { if (cb.checked) done[it.file] = 1; else delete done[it.file]; save(); row.classList.toggle("done", cb.checked); update(); };
+          $("button", row).onclick = () => copy(single(it), it.file + " 프롬프트를");
+          box.appendChild(row);
+        });
+        sec.appendChild(el);
+      });
+      list.appendChild(sec);
+    });
+    update();
+  }
+  function update() {
+    let all = 0, fin = 0; const per = { "캐릭터": [0, 0], "배경": [0, 0], "이벤트 CG": [0, 0] };
+    KIT.batches.forEach((b) => {
+      const d = b.items.filter((i) => done[i.file]).length;
+      all += b.items.length; fin += d; per[b.group][0] += d; per[b.group][1] += b.items.length;
+      const el = document.querySelector(`.batch[data-id="${b.id}"]`);
+      if (el) { el.querySelector(".cnt").textContent = `${d} / ${b.items.length}`; el.classList.toggle("complete", d === b.items.length); }
+    });
+    $("#counts").innerHTML = `<span>전체 <b>${fin} / ${all}</b>장 완료</span>` + Object.entries(per).map(([k, v]) => `<span>${k} ${v[0]} / ${v[1]}</span>`).join("");
+    $("#bar").style.width = (all ? (fin / all) * 100 : 0) + "%";
+  }
+  document.querySelectorAll(".seg button").forEach((b) => b.onclick = () => {
+    document.querySelectorAll(".seg button").forEach((x) => x.setAttribute("aria-pressed", String(x === b)));
+    const f = b.dataset.f;
+    document.querySelectorAll(".group").forEach((g) => { g.hidden = f !== "all" && g.dataset.group !== f; });
+  });
+  $("#hide-done").onchange = (e) => $("#list").classList.toggle("hide-done", e.target.checked);
+  render();
+})();
+</script>
