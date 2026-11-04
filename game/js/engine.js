@@ -66,10 +66,42 @@
   function evalCond(expr) {
     let fn = condCache[expr];
     if (!fn) {
-      const js = expr.replace(/[A-Za-z_][A-Za-z0-9_]*/g, (id) => `(v[${JSON.stringify(id)}]||0)`);
-      try { fn = condCache[expr] = new Function("v", `return !!(${js});`); } catch (e) { console.warn("조건식 오류", expr); return false; }
+      try { fn = condCache[expr] = compileCond(expr); } catch (e) { console.warn("조건식 오류", expr, e); return false; }
     }
-    return fn(Object.assign({ truecount: trueCount() }, st.vars));
+    return !!fn(Object.assign({ truecount: trueCount() }, st.vars));
+  }
+  // eval 없이 동작하는 조건식 파서 (CSP 대응)
+  // 문법: or := and ('||' and)* / and := not ('&&' not)* / not := '!' not | cmp
+  //       cmp := add (op add)? / add := atom (('+'|'-') atom)* / atom := 숫자 | 변수 | '(' or ')'
+  function compileCond(expr) {
+    const toks = expr.match(/\s*(>=|<=|==|!=|&&|\|\||[<>!()+\-]|\d+|[A-Za-z_][A-Za-z0-9_]*)/g).map((t) => t.trim());
+    if (toks.join("") !== expr.replace(/\s+/g, "")) throw new Error("알 수 없는 문자");
+    let i = 0;
+    const peek = () => toks[i];
+    const eat = (t) => { if (toks[i] !== t) throw new Error("기대: " + t); i++; };
+    function parseOr() { let a = parseAnd(); while (peek() === "||") { i++; const l = a, r = parseAnd(); a = (v) => l(v) || r(v); } return a; }
+    function parseAnd() { let a = parseNot(); while (peek() === "&&") { i++; const l = a, r = parseNot(); a = (v) => l(v) && r(v); } return a; }
+    function parseNot() { if (peek() === "!") { i++; const x = parseNot(); return (v) => !x(v); } return parseCmp(); }
+    function parseCmp() {
+      const l = parseAdd(); const op = peek();
+      if ([">=", "<=", "==", "!=", ">", "<"].includes(op)) {
+        i++; const r = parseAdd();
+        return { ">=": (v) => l(v) >= r(v), "<=": (v) => l(v) <= r(v), "==": (v) => l(v) === r(v), "!=": (v) => l(v) !== r(v), ">": (v) => l(v) > r(v), "<": (v) => l(v) < r(v) }[op];
+      }
+      return l;
+    }
+    function parseAdd() { let a = parseAtom(); while (peek() === "+" || peek() === "-") { const op = toks[i++]; const l = a, r = parseAtom(); a = op === "+" ? (v) => l(v) + r(v) : (v) => l(v) - r(v); } return a; }
+    function parseAtom() {
+      const t = toks[i++];
+      if (t === "(") { const x = parseOr(); eat(")"); return x; }
+      if (t === "-") { const x = parseAtom(); return (v) => -x(v); }
+      if (/^\d+$/.test(t)) { const n = +t; return () => n; }
+      if (/^[A-Za-z_]/.test(t)) return (v) => +(v[t] || 0);
+      throw new Error("예상치 못한 토큰: " + t);
+    }
+    const f = parseOr();
+    if (i !== toks.length) throw new Error("남은 토큰");
+    return f;
   }
   function applySet(ops) {
     (ops || []).forEach(([k, op, n]) => {
