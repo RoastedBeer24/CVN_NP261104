@@ -1,0 +1,460 @@
+{
+  "title": "블루 아워",
+  "subtitle": "青の時間 — Blue Hour",
+  "version": "0.1.0",
+  "defaultName": {
+    "family": "세오",
+    "given": "하루키"
+  },
+  "characters": {
+    "rin": {
+      "name": "린",
+      "full": "사에키 린",
+      "color": "#4f7397"
+    },
+    "yui": {
+      "name": "유이",
+      "full": "츠키시마 유이",
+      "color": "#8a74b0"
+    },
+    "shiori": {
+      "name": "시오리",
+      "full": "카미야 시오리",
+      "color": "#a8505f"
+    },
+    "noa": {
+      "name": "노아",
+      "full": "하야세 노아",
+      "color": "#d08a32"
+    },
+    "kondo": {
+      "name": "곤도",
+      "full": "곤도 겐조",
+      "color": "#6f7d62"
+    },
+    "maki": {
+      "name": "마키",
+      "full": "마키 요코",
+      "color": "#7a7a86"
+    },
+    "okabe": {
+      "name": "오카베",
+      "full": "오카베 신지",
+      "color": "#5c5c5c"
+    }
+  },
+  "expressions": [
+    "normal",
+    "smile",
+    "laugh",
+    "sad",
+    "angry",
+    "surprised",
+    "shy",
+    "serious",
+    "tired",
+    "cry"
+  ],
+  "positions": [
+    "left",
+    "left2",
+    "center",
+    "right2",
+    "right"
+  ],
+  "endings": [
+    {
+      "id": "rin_true",
+      "no": 1,
+      "kind": "TRUE",
+      "title": "같은 도면 위에서"
+    },
+    {
+      "id": "rin_normal",
+      "no": 2,
+      "kind": "NORMAL",
+      "title": "카운터 너머"
+    },
+    {
+      "id": "rin_bad",
+      "no": 3,
+      "kind": "BAD",
+      "title": "졸업설계의 빈칸"
+    },
+    {
+      "id": "yui_true",
+      "no": 4,
+      "kind": "TRUE",
+      "title": "창문의 수만큼"
+    },
+    {
+      "id": "yui_normal",
+      "no": 5,
+      "kind": "NORMAL",
+      "title": "새벽 4시의 메시지"
+    },
+    {
+      "id": "yui_bad",
+      "no": 6,
+      "kind": "BAD",
+      "title": "불 꺼진 4층"
+    },
+    {
+      "id": "shiori_true",
+      "no": 7,
+      "kind": "TRUE",
+      "title": "남겨진 파사드"
+    },
+    {
+      "id": "shiori_normal",
+      "no": 8,
+      "kind": "NORMAL",
+      "title": "계약 종료일"
+    },
+    {
+      "id": "shiori_bad",
+      "no": 9,
+      "kind": "BAD",
+      "title": "완공 예정도"
+    },
+    {
+      "id": "noa_true",
+      "no": 10,
+      "kind": "TRUE",
+      "title": "너의 눈으로 본 세계"
+    },
+    {
+      "id": "noa_normal",
+      "no": 11,
+      "kind": "NORMAL",
+      "title": "필름 한 롤"
+    },
+    {
+      "id": "noa_bad",
+      "no": 12,
+      "kind": "BAD",
+      "title": "초점이 맞지 않는 사진"
+    },
+    {
+      "id": "alone",
+      "no": 13,
+      "kind": "NORMAL",
+      "title": "혼자의 블루 아워"
+    },
+    {
+      "id": "leave",
+      "no": 14,
+      "kind": "BAD",
+      "title": "원래의 자리로"
+    },
+    {
+      "id": "hidden",
+      "no": 15,
+      "kind": "TRUE",
+      "title": "블루 아워",
+      "secret": true
+    }
+  ],
+  "hiddenRequires": [
+    "rin_true",
+    "yui_true",
+    "shiori_true",
+    "noa_true"
+  ],
+  "bgs": {
+    "black": {
+      "desc": "검은 화면",
+      "colors": [
+        "#000000",
+        "#000000"
+      ]
+    },
+    "white": {
+      "desc": "흰 화면",
+      "colors": [
+        "#ffffff",
+        "#f2f2f2"
+      ]
+    },
+    "ext_aono_day": {
+      "desc": "아오노 하우스 외관, 낮. 1968년 6층 모더니즘 RC 맨션, 운하 옆",
+      "colors": [
+        "#a9c1d6",
+        "#e8e2d6"
+      ]
+    },
+    "ext_aono_dusk": {
+      "desc": "아오노 하우스 외관, 블루 아워. 창마다 불이 켜지기 시작함",
+      "colors": [
+        "#1f3a63",
+        "#6d87b5"
+      ]
+    },
+    "ext_aono_night": {
+      "desc": "아오노 하우스 외관, 밤",
+      "colors": [
+        "#0b1426",
+        "#27395c"
+      ]
+    },
+    "rooftop_day": {
+      "desc": "아오노 하우스 옥상, 낮. 낮은 난간, 물탱크, 잠긴 유리 온실(빛의 방)",
+      "colors": [
+        "#9cc4e4",
+        "#dfe9ef"
+      ]
+    },
+    "rooftop_dusk": {
+      "desc": "옥상, 블루 아워. 도시와 운하가 푸르게 물듦",
+      "colors": [
+        "#1d3768",
+        "#5e7fb8"
+      ]
+    },
+    "rooftop_night": {
+      "desc": "옥상, 밤. 멀리 스카이트리와 도시 불빛",
+      "colors": [
+        "#070d1c",
+        "#1c2a4a"
+      ]
+    },
+    "stairwell": {
+      "desc": "중정을 둘러싼 나선 계단실. 천창에서 빛이 떨어짐",
+      "colors": [
+        "#b9b2a4",
+        "#e9e4da"
+      ]
+    },
+    "stairwell_night": {
+      "desc": "나선 계단실, 밤. 백열등",
+      "colors": [
+        "#2a2318",
+        "#6b5a3f"
+      ]
+    },
+    "hallway": {
+      "desc": "외부 복도. 같은 모양의 철문이 줄지어 있음",
+      "colors": [
+        "#a7a49c",
+        "#d8d4cb"
+      ]
+    },
+    "room601_day": {
+      "desc": "601호 주인공 방, 낮. 거의 빈 방, 제도 테이블과 박스, 큰 창",
+      "colors": [
+        "#c8d3dc",
+        "#efece6"
+      ]
+    },
+    "room601_dusk": {
+      "desc": "601호, 블루 아워. 운하 물빛이 천장에 푸르게 일렁임(푸른 천장)",
+      "colors": [
+        "#22406e",
+        "#6a8fc4"
+      ]
+    },
+    "room601_night": {
+      "desc": "601호, 밤. 스탠드 불빛과 도면",
+      "colors": [
+        "#141a24",
+        "#3b4250"
+      ]
+    },
+    "room601_rain": {
+      "desc": "601호, 비 오는 날",
+      "colors": [
+        "#5f6b78",
+        "#9aa5ae"
+      ]
+    },
+    "kondo_office": {
+      "desc": "1층 관리실. 바둑판, 오래된 열쇠함, 라디오",
+      "colors": [
+        "#7b6a52",
+        "#c9b896"
+      ]
+    },
+    "cafe_day": {
+      "desc": "1층 카페&바 NOCTURNE, 낮. 콘크리트와 원목, 로스터기",
+      "colors": [
+        "#8a6f55",
+        "#e4d6c3"
+      ]
+    },
+    "cafe_night": {
+      "desc": "NOCTURNE, 밤 바 영업. 앰버 조명, 위스키 선반",
+      "colors": [
+        "#1e130b",
+        "#6b4423"
+      ]
+    },
+    "yui_room": {
+      "desc": "402호 유이의 작업실, 밤. 모니터 불빛, 벽 가득 스케치",
+      "colors": [
+        "#16142a",
+        "#4a3f6e"
+      ]
+    },
+    "room302": {
+      "desc": "302호 빈 집. 벽에 연필 키재기 자국, 피아노 자리 자국",
+      "colors": [
+        "#b7aa98",
+        "#e2d8c8"
+      ]
+    },
+    "canal_day": {
+      "desc": "센다이보리강 운하 산책로, 낮. 벚나무, 낮은 다리",
+      "colors": [
+        "#8fbcd0",
+        "#e6eee8"
+      ]
+    },
+    "canal_night": {
+      "desc": "운하 산책로, 밤. 수면에 가로등이 비침",
+      "colors": [
+        "#0c1a2a",
+        "#2f4a63"
+      ]
+    },
+    "street_kiyosumi": {
+      "desc": "기요스미시라카와 골목. 로스터리, 갤러리, 낮은 주택",
+      "colors": [
+        "#b9b8a8",
+        "#ece8dc"
+      ]
+    },
+    "garden_kiyosumi": {
+      "desc": "기요스미 정원. 연못과 징검돌",
+      "colors": [
+        "#5f8a63",
+        "#cfe0c7"
+      ]
+    },
+    "museum": {
+      "desc": "도쿄도 현대미술관 로비. 높은 천장, 유리",
+      "colors": [
+        "#c9cfd4",
+        "#f4f5f5"
+      ]
+    },
+    "office_minato": {
+      "desc": "미나토 리얼티 회의실, 고층. 통유리 너머 도심",
+      "colors": [
+        "#4f6070",
+        "#c8d2db"
+      ]
+    },
+    "shiori_apartment": {
+      "desc": "시오리의 고층 맨션 거실, 밤. 미니멀, 야경",
+      "colors": [
+        "#0e1420",
+        "#36445c"
+      ]
+    },
+    "university": {
+      "desc": "대학 건축학과 제도실. 모형과 도면",
+      "colors": [
+        "#cfc8bb",
+        "#f1ede5"
+      ]
+    },
+    "station": {
+      "desc": "기요스미시라카와역 플랫폼",
+      "colors": [
+        "#7d8590",
+        "#c5cad0"
+      ]
+    },
+    "izakaya": {
+      "desc": "몬젠나카초 이자카야. 좁은 카운터",
+      "colors": [
+        "#4a2c1a",
+        "#b07a4a"
+      ]
+    },
+    "park_rain": {
+      "desc": "비 오는 공원. 우산, 수국",
+      "colors": [
+        "#4c5f6d",
+        "#93a7b3"
+      ]
+    },
+    "festival": {
+      "desc": "후카가와 여름 축제 노점 거리, 밤. 등롱",
+      "colors": [
+        "#2a0f12",
+        "#b8502e"
+      ]
+    },
+    "fireworks_river": {
+      "desc": "스미다강 불꽃놀이, 밤하늘",
+      "colors": [
+        "#080a1e",
+        "#3a2a5e"
+      ]
+    },
+    "beach_kamakura": {
+      "desc": "가마쿠라 유이가하마 해변, 여름 오후",
+      "colors": [
+        "#6fb0d6",
+        "#f2e6c9"
+      ]
+    },
+    "shibuya_night": {
+      "desc": "시부야 거리, 밤. 네온과 인파",
+      "colors": [
+        "#120a24",
+        "#6a2e7a"
+      ]
+    },
+    "gallery_space": {
+      "desc": "작은 화이트큐브 갤러리",
+      "colors": [
+        "#dcdcdc",
+        "#ffffff"
+      ]
+    },
+    "hospital": {
+      "desc": "병원 복도",
+      "colors": [
+        "#b8c4c4",
+        "#eef2f2"
+      ]
+    },
+    "christmas_street": {
+      "desc": "마루노우치 크리스마스 일루미네이션 거리",
+      "colors": [
+        "#0d1a2e",
+        "#c9a24a"
+      ]
+    },
+    "winter_canal": {
+      "desc": "겨울 운하, 눈 오는 저녁",
+      "colors": [
+        "#2a3a52",
+        "#c8d4e2"
+      ]
+    },
+    "demolition": {
+      "desc": "가림막이 둘러진 아오노 하우스, 철거 직전",
+      "colors": [
+        "#5a5a5a",
+        "#a8a8a8"
+      ]
+    },
+    "light_room": {
+      "desc": "옥상 유리 온실 '빛의 방' 내부, 블루 아워",
+      "colors": [
+        "#16336a",
+        "#8fb4e8"
+      ]
+    },
+    "tower_bluehall": {
+      "desc": "5년 후, 새 타워 1층의 「푸른 천장」 공간. 낮은 천장에 물빛이 일렁임",
+      "colors": [
+        "#1a3566",
+        "#7fa3d8"
+      ]
+    }
+  }
+}

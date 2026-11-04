@@ -1,0 +1,180 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no">
+<meta name="theme-color" content="#0d1830">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<title>블루 아워</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&family=Noto+Serif+KR:wght@300;400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div id="app">
+
+  <!-- 게임 화면 -->
+  <div id="stage" class="hidden">
+    <div id="bg"></div>
+    <div id="sprites"></div>
+    <div id="cg"></div>
+    <div id="fx"></div>
+    <div id="flash"></div>
+    <div id="timecap"></div>
+    <div id="phone" class="hidden"><div class="phone-head">메시지</div><div class="phone-body"></div></div>
+    <div id="textbox">
+      <div id="namebox"></div>
+      <div id="text"></div>
+      <div id="indicator"></div>
+    </div>
+    <div id="quickmenu">
+      <button data-act="auto">자동</button>
+      <button data-act="skip">스킵</button>
+      <button data-act="log">로그</button>
+      <button data-act="save">저장</button>
+      <button data-act="load">불러오기</button>
+      <button data-act="qsave" class="pc-only">Q저장</button>
+      <button data-act="qload" class="pc-only">Q불러오기</button>
+      <button data-act="settings">설정</button>
+      <button data-act="hideui" class="pc-only">숨기기</button>
+      <button data-act="title">타이틀</button>
+    </div>
+    <div id="modeflag"></div>
+    <div id="choices" class="hidden"></div>
+    <div id="chaptercard" class="hidden"><div class="cc-line"></div><div class="cc-text"></div></div>
+  </div>
+
+  <!-- 타이틀 -->
+  <div id="title" class="screen">
+    <div class="title-bg"></div>
+    <div class="title-inner">
+      <div class="title-sub">青の時間</div>
+      <h1 class="title-main">블루 아워</h1>
+      <div class="title-en">BLUE HOUR</div>
+      <nav class="title-menu">
+        <button data-act="new">처음부터</button>
+        <button data-act="continue" id="btn-continue">이어하기</button>
+        <button data-act="load">불러오기</button>
+        <button data-act="endings">엔딩</button>
+        <button data-act="gallery">갤러리</button>
+        <button data-act="settings">설정</button>
+        <button data-act="epilogue" id="btn-epilogue" class="hidden epilogue">에필로그 — 블루 아워</button>
+      </nav>
+    </div>
+    <div class="title-foot">이 작품은 성인을 대상으로 한 픽션입니다 · 모든 등장인물은 성인입니다</div>
+  </div>
+
+  <!-- 이름 입력 -->
+  <div id="nameinput" class="screen overlay hidden">
+    <div class="panel narrow">
+      <h2>주인공 이름</h2>
+      <p class="hint">스물일곱, 건축가. 1년 뒤 철거될 맨션에 막 이사 온 사람.</p>
+      <div class="name-row">
+        <label>성<input id="in-family" maxlength="6" autocomplete="off"></label>
+        <label>이름<input id="in-given" maxlength="6" autocomplete="off"></label>
+      </div>
+      <div class="row-btns">
+        <button data-act="close" class="ghost">취소</button>
+        <button data-act="start" class="primary">시작</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- 세이브/로드 -->
+  <div id="saveload" class="screen overlay hidden">
+    <div class="panel wide">
+      <div class="panel-head"><h2 id="sl-title">저장</h2><button data-act="close" class="x">닫기</button></div>
+      <div id="sl-tabs" class="tabs"></div>
+      <div id="sl-grid" class="slot-grid"></div>
+    </div>
+  </div>
+
+  <!-- 설정 -->
+  <div id="settings" class="screen overlay hidden">
+    <div class="panel">
+      <div class="panel-head"><h2>설정</h2><button data-act="close" class="x">닫기</button></div>
+      <div class="set-list">
+        <label class="set">텍스트 속도<input type="range" id="set-textSpeed" min="10" max="130" step="5"><span class="val"></span></label>
+        <label class="set">자동 진행 대기<input type="range" id="set-autoWait" min="0.5" max="5" step="0.25"><span class="val"></span></label>
+        <label class="set">배경음악<input type="range" id="set-bgmVol" min="0" max="1" step="0.05"><span class="val"></span></label>
+        <label class="set">효과음<input type="range" id="set-seVol" min="0" max="1" step="0.05"><span class="val"></span></label>
+        <label class="set">글자 크기
+          <select id="set-fontSize"><option value="s">작게</option><option value="m">보통</option><option value="l">크게</option></select><span class="val"></span></label>
+        <label class="set">텍스트 창 투명도<input type="range" id="set-boxAlpha" min="0.3" max="1" step="0.05"><span class="val"></span></label>
+        <label class="set chk">읽지 않은 문장도 스킵<input type="checkbox" id="set-skipUnread"></label>
+        <label class="set chk">성인 장면 표시<input type="checkbox" id="set-adult"></label>
+      </div>
+      <div class="row-btns">
+        <button data-act="reset" class="ghost danger">모든 데이터 초기화</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- 백로그 -->
+  <div id="backlog" class="screen overlay hidden">
+    <div class="panel wide tall">
+      <div class="panel-head"><h2>로그</h2><button data-act="close" class="x">닫기</button></div>
+      <div id="log-list"></div>
+    </div>
+  </div>
+
+  <!-- 엔딩 목록 -->
+  <div id="endings" class="screen overlay hidden">
+    <div class="panel wide tall">
+      <div class="panel-head"><h2>엔딩</h2><span id="end-count" class="count"></span><button data-act="close" class="x">닫기</button></div>
+      <div id="end-list"></div>
+    </div>
+  </div>
+
+  <!-- 갤러리 -->
+  <div id="gallery" class="screen overlay hidden">
+    <div class="panel wide tall">
+      <div class="panel-head"><h2>갤러리</h2><span id="gal-count" class="count"></span><button data-act="close" class="x">닫기</button></div>
+      <div id="gal-grid"></div>
+    </div>
+    <div id="gal-view" class="hidden"></div>
+  </div>
+
+  <!-- 엔딩 카드 -->
+  <div id="endcard" class="screen hidden">
+    <div class="ec-inner">
+      <div class="ec-kind"></div>
+      <div class="ec-no"></div>
+      <div class="ec-title"></div>
+      <div class="ec-hint">화면을 누르면 타이틀로 돌아갑니다</div>
+    </div>
+  </div>
+
+  <!-- 확인창 -->
+  <div id="confirm" class="screen overlay hidden">
+    <div class="panel narrow">
+      <p id="confirm-msg"></p>
+      <div class="row-btns">
+        <button data-act="no" class="ghost">취소</button>
+        <button data-act="yes" class="primary">확인</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- 첫 실행 안내 -->
+  <div id="agegate" class="screen overlay hidden">
+    <div class="panel narrow">
+      <h2>시작하기 전에</h2>
+      <p>「블루 아워」는 성인을 대상으로 한 연애 비주얼 노벨입니다.<br>
+      노골적이지 않은 성인 장면이 일부 포함되어 있습니다.<br>
+      성인 장면은 언제든 설정에서 바꿀 수 있습니다.</p>
+      <div class="row-btns col">
+        <button data-act="adult-on" class="primary">성인 장면 포함</button>
+        <button data-act="adult-off" class="ghost">성인 장면 없이</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="toast"></div>
+</div>
+
+<script src="js/scenario.js"></script>
+<script src="js/engine.js"></script>
+</body>
+</html>
