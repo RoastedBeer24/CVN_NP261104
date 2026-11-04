@@ -298,6 +298,36 @@ def main():
         json.dump(data, f, ensure_ascii=False, separators=(",", ":"))
         f.write(";\n")
     print(f"빌드 완료 → {os.path.relpath(OUT, ROOT)}")
+    if "BH_OUT" not in os.environ:
+        write_asset_list(meta, stats)
+
+
+def write_asset_list(meta, stats):
+    """필요한 이미지 ID 전체 목록을 docs/assets/ASSET_LIST.md 로 출력."""
+    path = os.path.join(ROOT, "docs", "assets", "ASSET_LIST.md")
+    os.makedirs(os.path.dirname(path), exist_ok=True)
+    out = ["# 필요한 에셋 목록 (자동 생성 — tools/build.py)", "",
+           "파일을 아래 이름으로 넣으면 자리표시자 대신 표시됩니다. 확장자는 png/jpg/webp 모두 가능.", ""]
+    out += ["## 배경 — game/assets/bg/", "", "| 파일명 | 설명 |", "|---|---|"]
+    for b in sorted(stats["bg"]):
+        out.append(f"| `{b}.png` | {meta['bgs'].get(b, {}).get('desc', '(docs/assets 의 파트별 문서 참고)')} |")
+    out += ["", "## 캐릭터 — game/assets/ch/ (프롬프트: characters.md)", "",
+            "`_normal` 만 있어도 동작합니다. 실제로 쓰인 표정 조합:", ""]
+    by = {}
+    for sp in sorted(stats["sprite"]):
+        ch, ex = sp.split("_", 1)
+        by.setdefault(ch, []).append(ex)
+    for ch, exs in by.items():
+        out.append(f"- **{ch}**: " + ", ".join(f"`{ch}_{e}.png`" for e in exs))
+    out += ["", "## 이벤트 CG — game/assets/cg/ (프롬프트: 파트별 문서)", ""]
+    out += [f"- `{c}.png`" for c in sorted(stats["cg"])]
+    out += ["", "## 배경음악 — game/assets/bgm/ (mp3/ogg)", ""]
+    out += [f"- `{c}.mp3`" for c in sorted(stats["bgm"])]
+    out += ["", "## 효과음 — game/assets/se/ (mp3/ogg/wav)", ""]
+    out += [f"- `{c}.mp3`" for c in sorted(stats["se"])]
+    with open(path, "w", encoding="utf-8") as f:
+        f.write("\n".join(out) + "\n")
+    print(f"에셋 목록 → {os.path.relpath(path, ROOT)}")
 
 
 if __name__ == "__main__":
